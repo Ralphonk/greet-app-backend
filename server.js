@@ -2,8 +2,9 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-app.use(cors()); // Enable CORS for frontend requests
-const PORT = 5000;
+app.use(cors());
+
+const PORT = process.env.PORT || 5000;
 
 app.get("/api/greet", (req, res) => {
   const { name } = req.query;
@@ -15,4 +16,4 @@ app.get("/api/greet", (req, res) => {
   res.json({ message: `Hello, ${name}! Welcome to Younglabs.` });
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, "0.0.0.0", () => console.log(`Server running on port ${PORT}`));
